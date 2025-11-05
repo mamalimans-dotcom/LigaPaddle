@@ -24,11 +24,11 @@ public class Liga {
      */
     public Liga(String nombreLiga, String equipo1, String equipo2, String equipo3, String equipo4) {
         // TODO 31: Inicializa todos los atributos de la clase
-
-
-
-
-
+        this.nombreLiga = nombreLiga;
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
+        this.equipo3 = equipo3;
+        this.equipo4 = equipo4;
 
     }
 
@@ -38,7 +38,8 @@ public class Liga {
      */
     public String getNombreLiga() {
         // TODO 32: Devuelve el nombre de la liga
-        return "";
+
+        return getNombreLiga();
     }
 
     /**
@@ -48,18 +49,17 @@ public class Liga {
      */
     public String getEquipo(int i) {
         // TODO 33: Devuelve el nombre del equipo correspondiente o sino cadena vacía
-
-
-
-
-
-
-
-
-
-
-
-        return "";
+    switch (i){
+        case 1:
+            return equipo1;
+        case 2:
+            return equipo2;
+        case 3:
+            return equipo3;
+        case 4:
+            return equipo4;
+    }
+        return " ";
     }
 
     /**

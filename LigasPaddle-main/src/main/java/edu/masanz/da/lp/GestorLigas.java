@@ -26,22 +26,19 @@ public class GestorLigas {
         Liga nuevaLiga = new Liga(nombreLiga, equipo1, equipo2, equipo3, equipo4);
         switch (numLiga) {
             case 1:
-                liga1 = nuevaLiga;
-            break;
-
+                this.liga1 = nuevaLiga;
+                break;
             case 2:
-                liga2 = nuevaLiga;
-            break;
+                this.liga2 = nuevaLiga;
+                break;
             case 3:
-                liga3 = nuevaLiga;
-            break;
+                this.liga3 = nuevaLiga;
+                break;
             case 4:
-                liga4 = nuevaLiga;
+                this.liga4 = nuevaLiga;
             default:
                 System.out.println("No existe la liga con ese nombre");
         }
-
-
 
 
     }
@@ -55,15 +52,15 @@ public class GestorLigas {
         // TODO 22: devuelve la liga correspondiente al número proporcionado.
         if (numLiga == 1) {
             return liga1;
-        }else if (numLiga == 2) {
+        } else if (numLiga == 2) {
             return liga2;
-        }else if (numLiga == 3) {
+        } else if (numLiga == 3) {
             return liga3;
-        }else if (numLiga == 4) {
+        }else if(numLiga == 4){
             return liga4;
-        }else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -73,17 +70,17 @@ public class GestorLigas {
      */
     public String getNombreLiga(int numLiga) {
         // TODO 23: devuelve el nombre de la liga correspondiente al número proporcionado.
-        if (numLiga == 1) {
-            return liga1.getNombreLiga();
-        }else if (numLiga == 2) {
-            return liga2.getNombreLiga();
-        }else if (numLiga == 3) {
-            return liga3.getNombreLiga();
-        }else if (numLiga == 4) {
-            return liga4.getNombreLiga();
-        }else {
-            return null;
-        }
+       if(numLiga == 1){
+           return liga1.getNombreLiga();
+       }else if(numLiga == 2){
+           return liga2.getNombreLiga();
+       }else if(numLiga == 3){
+           return liga3.getNombreLiga();
+       }else if(numLiga == 4){
+           return liga4.getNombreLiga();
+       }
+
+        return null;
     }
 
     /**
@@ -94,9 +91,14 @@ public class GestorLigas {
      */
     public String getEquipo(int numLiga, int numEquipo) {
         // TODO 24: devuelve el nombre del equipo correspondiente al número de liga y número de equipo proporcionados.
-        Liga liga = getLiga(numLiga);
-        if(liga != null){
-            return liga.getEquipo(numEquipo);
+        if(numLiga == 1){
+            return liga1.getEquipo(numEquipo);
+        }else if(numLiga == 2){
+            return liga2.getEquipo(numEquipo);
+        }else if(numLiga == 3){
+            return liga3.getEquipo(numEquipo);
+        }else if(numLiga == 4){
+            return liga4.getEquipo(numEquipo);
         }
         return null;
     }
@@ -114,7 +116,7 @@ public class GestorLigas {
         // TODO 25: establece el marcador de un partido entre dos equipos en una liga específica.
         Liga liga = getLiga(numLiga);
         if(liga != null){
-            liga.setMarcadorPartido( numEquipo1, numEquipo2,numMarcador, v1, v2);
+            liga.setMarcadorPartido(numEquipo1, numEquipo2, numMarcador, v1, v2);
         }
     }
 
@@ -126,18 +128,17 @@ public class GestorLigas {
         // TODO 26: devuelve una lista formateada de las ligas disponibles.
         // Ej. 1. A       2. B       3. C       4. D
         String s = "";
-        if(liga1 != null) {
-            s += ("1. s%\t " + liga1.getNombreLiga());
+        if(liga1 != null){
+            s +="1. s%\t "+ liga1.getNombreLiga();
         }
-        if(liga2 != null) {
-            s += ("2. s%\t "+ liga2.getNombreLiga());
+        if(liga2 != null){
+            s +="2. s%\t"+ liga2.getNombreLiga();
         }
-
-        if(liga3 != null) {
-            s += ("3. s%\t "+ liga3.getNombreLiga());
+        if(liga3 != null){
+            s +="3. s%\t"+ liga3.getNombreLiga();
         }
-        if(liga4 != null) {
-            s += ("4. s%\t "+ liga4.getNombreLiga());
+        if(liga4 != null){
+            s +="3. s%\t"+ liga4.getNombreLiga();
         }
 
         return s;
@@ -151,14 +152,16 @@ public class GestorLigas {
     public String getListaEquipos(int numLiga) {
         // TODO 27: devuelve una lista formateada de los equipos de una liga específica.
         // EJ. 1. A1      2. A2      3. A3      4. A4
+
         Liga liga = getLiga(numLiga);
         String s = "";
         if(liga != null) {
-            s += ("1. s%\t " + liga.getEquipo(1));
-            s += ("2. s%\t "+ liga.getEquipo(2));
-            s += ("3. s%\t "+ liga.getEquipo(3));
-            s += ("4. s%\t "+ liga.getEquipo(4));
+            s += "1. s%\t" + liga.getEquipo(1);
+            s += "2. s%\t" + liga.getEquipo(2);
+            s += "3. s%\t" + liga.getEquipo(3);
+            s += "4. s%\t" + liga.getEquipo(4);
         }
+
         return s;
     }
 
@@ -174,21 +177,25 @@ public class GestorLigas {
         //        3. C        C3
         //        4. D        D1
         //
+
         String txt = "";
-        if(liga1 != null) {
-            txt += ("1. s%\ts%\n " + liga1.getNombreLiga() + liga1.getEquipoCampeon());
-        }
-        if(liga2 != null) {
-            txt += ("2. s%\ts%\n " + liga2.getNombreLiga() + liga2.getEquipoCampeon());
-        }
-        if(liga3 != null) {
-            txt +=("3. s%\ts%\n " + liga3.getNombreLiga() + liga2.getEquipoCampeon());
-        }
-        if(liga4 != null) {
-            txt +=("3. s%\ts%\n " + liga4.getNombreLiga() + liga2.getEquipoCampeon());
+
+        for (int i = 1; i <= 4; i++) {
+                System.out.printf(i+"%8s\t%s\n",getLiga(i)+"\t"+getLiga(i).getEquipoCampeon());
         }
 
         return txt;
+
+      /*
+        if(liga1 != null){
+            txt +="1. s%\ts%\n"+ liga1.getEquipoCampeon();
+        }
+        if(liga2 != null){
+            txt +="2. s%\ts%\n"+ liga2.getEquipoCampeon();
+        }
+*/
+
+
     }
 
     /**
@@ -219,17 +226,17 @@ public class GestorLigas {
         //
 
 
-        String s = "";
 
-        System.out.println("-------------------------");
-        for(int fila = 0; fila < 4; fila++) {
-            for (int columna = 0; columna < 3; columna++) {
-                System.out.println(" | " + fila + "-" + columna + " | ");
-                System.out.println("-------------------------");
-            }
-        }
 
-        return s;
+
+
+
+
+
+
+
+
+        return "X";
     }
 
 }
